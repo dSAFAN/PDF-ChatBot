@@ -57,3 +57,19 @@ def create_chain(vectorstore):
 
 def ask_question(chain, question):
     return chain.invoke(question)
+
+
+if __name__ == "__main__":
+    from db import create_vectorstore
+    
+    # Step 1 — Create vectorstore from your test PDF
+    vectorstore = create_vectorstore("case_study_2327114.pdf")
+    print("✅ Vectorstore created")
+    
+    # Step 2 — Create chain
+    chain = create_chain(vectorstore)
+    print("✅ Chain created")
+    
+    # Step 3 — Ask a question
+    answer = ask_question(chain, "Is there a specific target mentioned in the case study?")
+    print("✅ Answer:", answer)
